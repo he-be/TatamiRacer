@@ -1,6 +1,8 @@
 [Japanese](https://github.com/covao/TatamiRacer/blob/master/README_JP.md) / [English](https://github.com/covao/TatamiRacer/blob/master/README.md)  
 
 ![TatamiRacerLogo](img/TatamiRacer_LogoM.png)
+
+[![OSHWA Certified](https://img.shields.io/badge/OSHWA-Certified-blue.svg)](https://certification.oshwa.org/jp000023.html)
 ### ver 2.0      
 TatamiRacer is a tiny autonomous driving car based on the ["TAMIYA MINI 4WD" kit](https://www.tamiya.com/english/mini4wd/m4item/m4item.htm). It can operate within the space of a single ["Tatami"](https://en.wikipedia.org/wiki/Tatami) mat, approximately 1.8m x 0.9m. The car uses ["Donkey Car"](http://docs.donkeycar.com/) software for deep learning and self-driving control. Interestingly, the Japanese word "Tatami" also brings to mind convolution operations in neural networks.
 
