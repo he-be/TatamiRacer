@@ -2,6 +2,8 @@
 
 ![TatamiRacerLogo](img/TatamiRacer_LogoM.png)
 
+[![OSHWA Certified](https://img.shields.io/badge/OSHWA-Certified-blue.svg)](https://certification.oshwa.org/jp000023.html)
+
 ### ver 2.0
 
 TatamiRacerは、[「タミヤ ミニ四駆」キット](https://www.tamiya.com/english/mini4wd/m4item/m4item.htm)に基づいた小型自動運転車です。約1.8m x 0.9mの1畳のスペースで動作可能です。車はディープラーニングと自動運転制御のために["Donkey Car"](http://docs.donkeycar.com/)ソフトウェアを使用しています。興味深いことに、日本語の「畳」という言葉は、ニューラルネットワークの畳み込み演算も連想させます。
