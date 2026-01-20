@@ -88,7 +88,7 @@ class PWMSteering_TATAMI:
         pass
 
     def shutdown(self):
-        pi.set_mode(self.gpio_pin, self.pigpio.INPUT)
+        self.pi.set_mode(self.gpio_pin, self.pigpio.INPUT)
         self.pi.stop()      
 
 #Throttle parts for TatamiRacer
@@ -289,9 +289,6 @@ def drive(cfg, model_path=None, use_joystick=False, model_type=None,
             cam = DonkeyGymEnv(cfg.DONKEY_SIM_PATH, host=cfg.SIM_HOST, env_name=cfg.DONKEY_GYM_ENV_NAME, conf=cfg.GYM_CONF, record_location=cfg.SIM_RECORD_LOCATION, record_gyroaccel=cfg.SIM_RECORD_GYROACCEL, record_velocity=cfg.SIM_RECORD_VELOCITY, delay=cfg.SIM_ARTIFICIAL_LATENCY)
             threaded = True
             inputs  = ['angle', 'throttle']
-        elif cfg.CAMERA_TYPE == "PICAM":
-            from donkeycar.parts.camera import PiCamera
-            cam = PiCamera(image_w=cfg.IMAGE_W, image_h=cfg.IMAGE_H, image_d=cfg.IMAGE_DEPTH, framerate=cfg.CAMERA_FRAMERATE, vflip=cfg.CAMERA_VFLIP, hflip=cfg.CAMERA_HFLIP)
         elif cfg.CAMERA_TYPE == "WEBCAM":
             from donkeycar.parts.camera import Webcam
             cam = Webcam(image_w=cfg.IMAGE_W, image_h=cfg.IMAGE_H, image_d=cfg.IMAGE_DEPTH)
@@ -301,9 +298,6 @@ def drive(cfg, model_path=None, use_joystick=False, model_type=None,
         elif cfg.CAMERA_TYPE == "CSIC":
             from donkeycar.parts.camera import CSICamera
             cam = CSICamera(image_w=cfg.IMAGE_W, image_h=cfg.IMAGE_H, image_d=cfg.IMAGE_DEPTH, framerate=cfg.CAMERA_FRAMERATE, gstreamer_flip=cfg.CSIC_CAM_GSTREAMER_FLIP_PARM)
-        elif cfg.CAMERA_TYPE == "V4L":
-            from donkeycar.parts.camera import V4LCamera
-            cam = V4LCamera(image_w=cfg.IMAGE_W, image_h=cfg.IMAGE_H, image_d=cfg.IMAGE_DEPTH, framerate=cfg.CAMERA_FRAMERATE)
         elif cfg.CAMERA_TYPE == "MOCK":
             from donkeycar.parts.camera import MockCamera
             cam = MockCamera(image_w=cfg.IMAGE_W, image_h=cfg.IMAGE_H, image_d=cfg.IMAGE_DEPTH)
@@ -313,6 +307,9 @@ def drive(cfg, model_path=None, use_joystick=False, model_type=None,
         elif cfg.CAMERA_TYPE == "LEOPARD":
             from donkeycar.parts.leopard_imaging import LICamera
             cam = LICamera(width=cfg.IMAGE_W, height=cfg.IMAGE_H, fps=cfg.CAMERA_FRAMERATE)
+        elif cfg.CAMERA_TYPE == "PICAM2":
+            from picamera2_part import PiCamera2
+            cam = PiCamera2(image_w=cfg.IMAGE_W, image_h=cfg.IMAGE_H, framerate=cfg.CAMERA_FRAMERATE)
         else:
             raise(Exception("Unkown camera type: %s" % cfg.CAMERA_TYPE))
 

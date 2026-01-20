@@ -20,7 +20,7 @@
 # MAX_LOOPS = None        # the vehicle loop can abort after this many iterations, when given a positive integer.
 # 
 # #CAMERA
-# CAMERA_TYPE = "PICAM"   # (PICAM|WEBCAM|CVCAM|CSIC|V4L|D435|MOCK|IMAGE_LIST)
+# CAMERA_TYPE = "PICAM2"   # (WEBCAM|CVCAM|CSIC|D435|MOCK|IMAGE_LIST|PICAM2)
 # IMAGE_W = 160
 # IMAGE_H = 120
 # IMAGE_DEPTH = 3         # default RGB=3, make 1 for mono

@@ -9,12 +9,12 @@ This page describes about installing DonkeyCar software and custumizing TatamiRa
 1. Download "Raspberry Pi Imager" from [Raspberry Pi official site](https://www.raspberrypi.org/software/). 
 2. Install "Raspberry Pi Imager".
 3. Start "Raspberry Pi imager".
-4. Downlowd Raspbian-OS file from the following site.    
+4. Downlowd Raspberry Pi OS (Legacy) or latest Bookworm.  
 For TatamiRacer it is recommended to install the desktop version.  
 Stable Raspbian version for DonkeyCar 
-https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/  
-	2021-05-07-raspios-buster-armhf.zip     
- See note of Raspbian Bullseye issue of Donkey Car.
+Use **Raspberry Pi OS (Legacy, 64-bit) based on Debian Bookworm** or just **Raspberry Pi OS (64-bit)**.
+(Buster is deprecated).
+ See note of Raspbian Bullseye/Bookworm issue of Donkey Car.
  [Flash Operating System](https://docs.donkeycar.com/guide/robot_sbc/setup_raspberry_pi/#step-1-flash-operating-system)
 
 5. If you press advanced configration button, you can set WIFI, host name, SSH, user name and password, local setting.
@@ -51,13 +51,21 @@ OR
 
 6. Launch ssh by following command.  
 ~~~
-ssh-keygen -R raspberrypi
-ssh pi@raspberrypi
+ssh-keygen -R raspberrypi.local
+ssh pi@raspberrypi.local
 
 ~~~
 If <code>"The authenticity of host 'raspberrypi... Are you sure you want to continue connecting (yes/no)?"</code> is appeared, enter yes.  
 
-7. Enter password. Initial Password:<code>raspberry</code>
+7. Enter password. Initial Password:<code>raspberry</code> (or whatever you set in the Imager)
+
+8. **Camera Check (Bookworm)**
+Check if the camera works:
+~~~
+rpicam-still --list-cameras
+rpicam-still -t 5000 -o test.jpg
+~~~
+If you see the camera detected and an image is saved, the camera is working.
 
 # Setup VNC
 Remote desktop environment is useful to access Raspberry pi from host pc.  
@@ -93,16 +101,15 @@ yes | sudo apt-get update
 yes | sudo apt-get upgrade
 
 ~~~
-*Press q when you see the following message.
-<code>if webkit2gtk (2.31.1-1) experimental; urgency=medium ...</code>
+
 
 2. The following command will install the latest Donkey Car application and create default "mycar" application.
 ~~~
-wget "https://raw.githubusercontent.com/covao/TatamiRacer/master/raspi/install/install_donkey_raspi.sh" -O "install_donkey_raspi.sh"
+wget "https://raw.githubusercontent.com/he-be/TatamiRacer/master/raspi/install/install_donkey_raspi.sh" -O "install_donkey_raspi.sh"
 sh -x install_donkey_raspi.sh
 
 ~~~
-The shell script is here. [install_donkey_raspi.sh](https://raw.githubusercontent.com/covao/TatamiRacer/master/raspi/install/install_donkey_raspi.sh)
+The shell script is here. [install_donkey_raspi.sh](https://raw.githubusercontent.com/he-be/TatamiRacer/master/raspi/install/install_donkey_raspi.sh)
 
 ## Method 2: Install Manually Step by Step
 See following procedure.
@@ -113,11 +120,11 @@ See following procedure.
 The following command will replace 'manage.py' and 'config.py' and add 'tatamiracer_test.py' for TatamiRacer.  
 In addition it will create the shortcut into desktop.  
 ~~~
-wget "https://raw.githubusercontent.com/covao/TatamiRacer/master/raspi/install/setup_tatamiracer.sh" -O "setup_tatamiracer.sh"
+wget "https://raw.githubusercontent.com/he-be/TatamiRacer/master/raspi/install/setup_tatamiracer.sh" -O "setup_tatamiracer.sh"
 sh -x setup_tatamiracer.sh
 
 ~~~
-The shell script is here. [setup_tatamiracer.sh](https://raw.githubusercontent.com/covao/TatamiRacer/master/raspi/install/setup_tatamiracer.sh)
+The shell script is here. [setup_tatamiracer.sh](https://raw.githubusercontent.com/he-be/TatamiRacer/master/raspi/install/setup_tatamiracer.sh)
 
 <img src="../img/TatamiRacer_Shortcut.jpg" alt="" title="" width="640" height="">
 
